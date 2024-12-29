@@ -290,25 +290,36 @@ function generateKids(person, spouse) { // get kids
 
 	var yom=0;  // years of marriage
 	var girl=0;
+	var babycount=0; // children per birth
 	while (yom <= mspan) {
 	if ( rollD(100) <= homo.generateFertility(fertstart+yom,girl) ) {
-		var partialKid = new Object();
+		if (rollD(100) <= RATE_multi_birth) {
+			babycount = rnd(homo.MEAN_litterSize, homo.STD_litterSize);
+		} else {
+			babycount = 1;
+		}
 
-		partialKid.parentNodeId = spouse.pid;
-		partialKid.parentId1 = person.pid;
-		partialKid.parentId2 = spouse.pid;
-		partialKid.byear = spouse.myear + yom;
-		var kid = finishPerson(partialKid);
+		while (babycount > 0) {
+			var partialKid = new Object();
+	
+			partialKid.parentNodeId = spouse.pid;
+			partialKid.parentId1 = person.pid;
+			partialKid.parentId2 = spouse.pid;
+			partialKid.byear = spouse.myear + yom;
+			var kid = finishPerson(partialKid);
+	
+			if (kid.gender == 'F')
+				girl = girl + 1;
+	
+			displayPerson(kid);
+			linData[kid.pid] = kid;
+	
+			//In currentYearMode, we do depth-first generation of people.
+			if (currentYearMode && kid.family && kid.myear <= currentYear) {
+				generateFamily(kid.pid);
+			}
 
-		if (kid.gender == 'F')
-			girl = girl + 1;
-
-		displayPerson(kid);
-		linData[kid.pid] = kid;
-
-		//In currentYearMode, we do depth-first generation of people.
-		if (currentYearMode && kid.family && kid.myear <= currentYear) {
-			generateFamily(kid.pid);
+			babycount--;
 		}
 
 		//Check for maternal death in childbirth.
