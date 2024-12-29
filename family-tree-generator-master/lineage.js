@@ -293,7 +293,7 @@ function generateKids(person, spouse) { // get kids
 	var babycount=0; // children per birth
 	while (yom <= mspan) {
 	if ( rollD(100) <= homo.generateFertility(fertstart+yom,girl) ) {
-		if (rollD(100) <= homo.RATE_multi_birth) {
+		if (rollD(100) <= RATE_multi_birth) {
 			babycount = rnd(homo.MEAN_litterSize, homo.STD_litterSize);
 		} else {
 			babycount = 1;
