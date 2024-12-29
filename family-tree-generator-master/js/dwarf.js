@@ -10,6 +10,9 @@ addRace("dwarf", "Dwarf", dwarf, false);
 	dwarf.RATE_bachelor_ette = 4;  //chance of refusal to marry, both sexes; otherwise married at available spouse rate
 	
 	dwarf.RATE_male = 75; // Male/female ratio at birth.  Should be 51% for humans.
+	dwarf.RATE_multi_birth = 1; // Rate of multiple births
+	dwarf.MEAN_litterSize = 2; // Average number of children in multiple birth
+	dwarf.STD_litterSize = 1;
 	
 	dwarf.MIN_fmage = 16; // Minimum age of marriage; cut off below dwarf.
 	dwarf.MEAN_fmage = 32; // Average age of marriage on a normal curve. % should be 13-21 for medieval human women
