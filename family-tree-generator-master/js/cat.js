@@ -11,6 +11,8 @@ addRace("cat", "Cat", cat, false);
 	
 	cat.RATE_male = 50; // Male/female ratio at birth.  Should be 51% for humans.
 	cat.RATE_multi_birth = 100; // Rate of multiple births
+	cat.MEAN_litterSize = 4;
+	cat.STD_litterSize = 2;
 
 	cat.MIN_fmage = 12; // Minimum age of marriage; cut off below this.
 	cat.MEAN_fmage = 30; // Average age of marriage on a normal curve. % should be 13-21 for medieval human women
@@ -28,10 +30,6 @@ addRace("cat", "Cat", cat, false);
 
 	cat.MEAN_childDelay = 10;
 	cat.STD_childDelay = 2;
-	
-	cat.MEAN_litterSize = 4;
-	cat.STD_litterSize = 2;
-	
 
 cat.fnames = ["Dís", "Dís", "Dís", "Dís", "Dís", "Dís", "Dís", "Dís", "Dís", "Dís"];
 
