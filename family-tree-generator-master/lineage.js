@@ -259,9 +259,17 @@ function generateDeathAge(mage) { // get age they die at
 		if (rollD(2) < 2) {
 			dage = 1;
 		} else if (rollD(2) < 2) {
-			dage = rollD(5);
+			if (homo.adult_age == 12) {
+				dage = rollD(3)
+			} else {
+				dage = rollD(5);
+			}
 		} else {
-			dage = rollD(15);
+			if (homo.adult_age == 12) {
+				dage = rollD(9)
+			} else {
+				dage = rollD(15);
+			}
 		}
 	} else {
 		dage = rnd(homo.MEAN_dage,homo.STD_dage);
