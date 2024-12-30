@@ -11,15 +11,16 @@ addRace("cat", "Cat", cat, false);
 	
 	cat.RATE_male = 50; // Male/female ratio at birth.  Should be 51% for humans.
 	cat.RATE_multi_birth = 100; // Rate of multiple births
-	cat.MEAN_litterSize = 4;
-	cat.STD_litterSize = 2;
+	cat.MEAN_litterSize = 3.5;
+	cat.STD_litterSize = 1.5;
 
+	cat.adult_age = 12
 	cat.MIN_fmage = 12; // Minimum age of marriage; cut off below this.
 	cat.MEAN_fmage = 30; // Average age of marriage on a normal curve. % should be 13-21 for medieval human women
-	cat.STD_fmage = 5; // Standard deviation in age of marriage.
+	cat.STD_fmage = 10; // Standard deviation in age of marriage.
 	cat.MIN_mmage = 12; // Minimum age of marriage; cut off below this.
 	cat.MEAN_mmage = 30; // Average age of marriage on a normal curve.
-	cat.STD_mmage = 5; // Standard deviation in age of marriage.
+	cat.STD_mmage = 10; // Standard deviation in age of marriage.
 
 	cat.RATE_dchildbirth = 0.5; //Chance of death in childbirth
 	cat.RATE_dchildhood = 50; //Chance of death in infancy or childhood
@@ -54,21 +55,20 @@ cat.getClan = function(person) {
 	cat.generateFertility = function(fertyear, girl) { // return fertility based on age
 		var chance = 0;
 		/* dwarves */
-		if (fertyear > 16 && fertyear <= 20) chance = 10;
-		if (fertyear > 20 && fertyear <= 24) chance = 20;
-		if (fertyear > 24 && fertyear <= 28) chance = 30;
-		if (fertyear > 28 && fertyear <= 30) chance = 60;
-		if (fertyear > 30 && fertyear <= 32) chance = 80;
-		if (fertyear > 32 && fertyear <= 48) chance = 98;
-		if (fertyear > 48 && fertyear <= 64) chance = 80;
-		if (fertyear > 64 && fertyear <= 96) chance = 60;
-		if (fertyear > 96 && fertyear <= 110) chance = 40;
-		if (fertyear > 110 && fertyear <= 128) chance = 30;
-		if (fertyear > 128 && fertyear <= 146) chance = 20;
-		if (fertyear > 146 && fertyear <= 164) chance = 10;
-		if (fertyear > 164 && fertyear <= 200) chance = 5;
-		if (fertyear > 200 && fertyear <= 236) chance = 3;
-		if (fertyear > 236) chance = 1;
+		if (fertyear < 12) chance = 10; //1yr
+		if (fertyear >= 12 && fertyear <= 14) chance = 20;
+		if (fertyear > 14 && fertyear <= 16) chance = 30;
+		if (fertyear > 16 && fertyear <= 18) chance = 60; //1.5yr
+		if (fertyear > 18 && fertyear <= 20) chance = 80;
+		if (fertyear > 20 && fertyear <= 42) chance = 98; //1.5-3.5yr
+		if (fertyear > 42 && fertyear <= 60) chance = 80; //5yr
+		if (fertyear > 60 && fertyear <= 72) chance = 60; //6yr
+		if (fertyear > 72 && fertyear <= 96) chance = 40; //8yr
+		if (fertyear > 96 && fertyear <= 108) chance = 20; //9yr
+		if (fertyear > 108 && fertyear <= 120) chance = 10; //10yr
+		if (fertyear > 120 && fertyear <= 132) chance = 5; //11yr
+		if (fertyear > 132 && fertyear <= 144) chance = 3; //12yr
+		if (fertyear > 144) chance = 1;
 		
 		return chance;
 	};
